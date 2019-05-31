@@ -32,6 +32,7 @@ public class Ownable {
     }
 
     private static void setOwner(Address newOwner) {
+        Blockchain.require(newOwner != null);
         emitOwnershipTransferredEvent(owner, newOwner);
         owner = newOwner;
     }
@@ -45,7 +46,7 @@ public class Ownable {
 
     private static boolean isOwner() {
         Address caller = Blockchain.getCaller();
-        return (owner == caller) || (owner != null && owner.equals(caller));
+        return owner.equals(caller);
     }
 
     /**
