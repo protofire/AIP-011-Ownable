@@ -5,7 +5,10 @@ import org.aion.avm.core.util.ABIUtil;
 import org.aion.avm.tooling.AvmRule;
 import org.aion.vm.api.interfaces.IExecutionLog;
 import org.aion.vm.api.interfaces.ResultCode;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.ClassRule;
+import org.junit.Test;
 
 import java.math.BigInteger;
 import java.util.Arrays;
@@ -85,10 +88,17 @@ public class OwnableTest {
     }
 
     @Test
-    public void transferOwnership() { //onlyOwner
+    public void transferOwnership_byOwner_succeed() { //onlyOwner
         doCall("transferOwnership", other);
         Object currentOwner = doCall("getOwner");
         Assert.assertEquals(other, currentOwner);
+    }
+
+    @Test
+    public void transferOwnership_byNotOwner_rejected() { //onlyOwner
+        doCall(other,"transferOwnership", other);
+        Object currentOwner = doCall("getOwner");
+        Assert.assertEquals(owner, currentOwner);
     }
 
     private Optional<IExecutionLog> findAnyLog(AvmRule.ResultWrapper result, byte[] logData) {
