@@ -11,8 +11,8 @@ import org.junit.ClassRule;
 import org.junit.Test;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import static com.altoros.aion.Ownable.Const.OWNERSHIP_TRANSFERRED;
@@ -101,10 +101,16 @@ public class OwnableTest {
         Assert.assertEquals(owner, currentOwner);
     }
 
-    private Optional<IExecutionLog> findAnyLog(AvmRule.ResultWrapper result, byte[] logData) {
-        return result.getLogs().stream()
-                .filter(log -> Arrays.equals(logData, log.getData()))
-                .findAny();
+    private Optional<IExecutionLog> findAnyLog(AvmRule.ResultWrapper result, String event) {
+        for (IExecutionLog log : result.getLogs()) {
+            if (!log.getTopics().isEmpty()) {
+                String topic = new String(log.getTopics().get(0)).trim();
+                if (Objects.equals(event, topic)) {
+                    return Optional.of(log);
+                }
+            }
+        }
+        return Optional.empty();
     }
 }
 

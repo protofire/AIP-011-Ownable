@@ -10,7 +10,7 @@ import static com.altoros.aion.Ownable.Const.OWNERSHIP_TRANSFERRED;
 public class Ownable {
     public static class Const {
         public static final Address NO_ADDRESS = new Address(new byte[32]);
-        public static final byte[] OWNERSHIP_TRANSFERRED = "OwnershipTransferred".getBytes();
+        public static final String OWNERSHIP_TRANSFERRED = "OwnershipTransferred";
     }
 
     private static Address owner = NO_ADDRESS;
@@ -75,8 +75,9 @@ public class Ownable {
 
     private static void emitOwnershipTransferredEvent(Address oldOwner, Address newOwner) {
         Blockchain.log(
+                OWNERSHIP_TRANSFERRED.getBytes(),
                 oldOwner.toByteArray(),
-                newOwner.toByteArray(),
-                OWNERSHIP_TRANSFERRED);
+                newOwner.toByteArray()
+        );
     }
 }
