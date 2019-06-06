@@ -11,52 +11,35 @@ Contact Information: manuel.garcia@altoros.com
 ---
 
 ## Summary
-TBD 
-
-Java rewrite of https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/ownership/Ownable.sol
-<!-- *  One sentence summary of the proposal -->
+Contract module for simple authorization and access control mechanisms. 
 
 ## Value Proposition 
-TBD
-<!-- *  Brief summary of what value this improvement provides to the overall Aion community. -->
+Contract module which provides a basic access control mechanism, where there is an account (an owner) that can be granted exclusive access to specific functions.
 
 ## Motivation
-TBD
-<!-- * Explain the motivation for submitting this proposal. Who does it benefit and why is it needed? Provide any relevant data or research. -->
+This module could be used through inheritance. It will make available the modifier `onlyOwner`, which can be aplied to your functions to restrict their use to the owner.
 
 ## Non-Goals
-TBD
-<!-- * Provide a brief explanation of what is out-of-scope for this proposal and what it is not designed to achieve. -->
 
 ## Success Metrics
-TBD 
-<!-- * If applicable, what metrics and benchmarks can be tracked to evaluate the success of this proposal. -->
 
 ## Description
-TBD
 <!-- *  Summary of the context and proposed improvement. -->
  
 ## Specification
-TBD
-<!-- * Technical specification of the proposed improvement containing the appropriate syntax and semantics. Should cover the various active implementations of Aion. -->
+Based on Solidity implementation https://github.com/OpenZeppelin/openzeppelin-solidity/blob/master/contracts/ownership/Ownable.sol
 
 ## Logic
-TBD
 <!-- * Walk-through of the design and specification considerations, choices and approach. Provide practical examples of similar implementations, feedback from the community and perspectives on possible concerns. -->
 
 ## Risks & Assumptions
-TBD
-<!-- * Breakdown potential risks introduced by this proposal. How does it affect compatibility? Are there any internal or external events that could threaten the effectiveness of this proposal? Provide mitigation strategies for all listed risks and identify any assumptions. -->
 
 ## Test Cases
-TBD
-<!-- * Provide test cases for the improvements implementation. Test cases are essential in “Core” improvement proposals. -->
-
+[Test cases reference implementation](https://github.com/protofire/AIP-011-Ownable/blob/master/src/test/java/com/altoros/aion/OwnableTest.java)
 ## Implementations
 
 ### Definitions
-TBD
-<!-- * Proposed code to be implemented. This section must be complete and adopted for the AIP to be set to “Final”. Implementations must cover the majority of active Aion clients. -->
+[Reference implementation](https://github.com/protofire/AIP-011-Ownable/blob/master/src/main/java/com/altoros/aion/Ownable.java)
 
 ### Methods
 
@@ -116,8 +99,7 @@ Indicates ownership change form `oldOwner` address to `newOwner` address.
 private static void emitOwnershipTransferredEvent(Address oldOwner, Address newOwner)
 ```
 
-## Dependencies
-TBD 
+## Dependencies 
 <!-- * Identify any other AIP's, modules, libraries, or API's that are dependencies for this AIP to be implemented or achieve its value proposition. -->
 
 ## Copyright
