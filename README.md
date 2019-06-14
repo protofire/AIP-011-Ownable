@@ -4,7 +4,7 @@
 
 To build and deploy contract run:
 ```bash
-mvn aion4j:init
+mvn initialize
 mvn clean package
 mvn aion4j:deploy -Premote -Dpk=<you aion pk>
 ```
