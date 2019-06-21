@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import static com.altoros.aion.Ownable.Const.OWNERSHIP_TRANSFERRED;
+import static com.altoros.aion.Ownable.OWNERSHIP_TRANSFERRED;
 
 public class OwnableTest {
     @ClassRule

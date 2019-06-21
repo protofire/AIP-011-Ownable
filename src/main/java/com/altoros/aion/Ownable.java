@@ -4,14 +4,9 @@ import avm.Address;
 import avm.Blockchain;
 import org.aion.avm.tooling.abi.Callable;
 
-import static com.altoros.aion.Ownable.Const.NO_ADDRESS;
-import static com.altoros.aion.Ownable.Const.OWNERSHIP_TRANSFERRED;
-
 public class Ownable {
-    public static class Const {
-        public static final Address NO_ADDRESS = new Address(new byte[32]);
-        public static final String OWNERSHIP_TRANSFERRED = "OwnershipTransferred";
-    }
+    public static final Address NO_ADDRESS = new Address(new byte[32]);
+    public static final String OWNERSHIP_TRANSFERRED = "OwnershipTransferred";
 
     private static Address owner = NO_ADDRESS;
 
