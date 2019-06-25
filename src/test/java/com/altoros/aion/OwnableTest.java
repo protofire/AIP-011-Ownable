@@ -11,13 +11,14 @@ import org.junit.ClassRule;
 import org.junit.Test;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-import static com.altoros.aion.Ownable.OWNERSHIP_TRANSFERRED;
-
 public class OwnableTest {
+
+    private static final byte[] OWNERSHIP_TRANSFERRED = "OwnershipTransferred".getBytes();
+
     @ClassRule
     public static AvmRule avmRule = new AvmRule(true);
 
@@ -101,11 +102,11 @@ public class OwnableTest {
         Assert.assertEquals(owner, currentOwner);
     }
 
-    private Optional<IExecutionLog> findAnyLog(AvmRule.ResultWrapper result, String event) {
+    private Optional<IExecutionLog> findAnyLog(AvmRule.ResultWrapper result, byte[] event) {
         for (IExecutionLog log : result.getLogs()) {
             if (!log.getTopics().isEmpty()) {
-                String topic = new String(log.getTopics().get(0)).trim();
-                if (Objects.equals(event, topic)) {
+                byte[] topic = new String(log.getTopics().get(0)).trim().getBytes();
+                if (Arrays.equals(event, topic)) {
                     return Optional.of(log);
                 }
             }
