@@ -54,7 +54,7 @@ public class Ownable {
     @Callable
     public static void renounceOwnership() {
         onlyOwner();
-        setOwner(NO_ADDRESS);
+        owner = null;
     }
 
     /**
